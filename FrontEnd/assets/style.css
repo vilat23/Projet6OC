@@ -239,7 +239,10 @@ li:hover {
 	border-radius: 60px;
 }
 #filtres div:hover{
+	background-color: #1d6154;
+	color: white;
 	cursor: pointer;
+	transition: background-color .5s ease-out;
 }
 
 .gallery {
