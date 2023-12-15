@@ -229,7 +229,6 @@ li:hover {
 	width: 100%;
 	gap: 2%;
 }
-
 #filtres div {
 	padding: 10px;
 	color: #1d6154;
@@ -239,6 +238,9 @@ li:hover {
 	border: 1px solid #1d6154;
 	border-radius: 60px;
 }
+#filtres div:hover{
+	cursor: pointer;
+}
 
 .gallery {
 	width: 100%;
@@ -246,6 +248,14 @@ li:hover {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+}
+
+/* CLASS ACTIVE & INACTIVE */
+.active{
+	display: block;
+}
+.inactive{
+	display: none;
 }
 
 .gallery img {
