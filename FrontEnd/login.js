@@ -11,15 +11,14 @@ const errorMsgField = document.querySelector("#formSection p");
 
 form.addEventListener('submit', (e) => {
 
-    // empêche le rechargement de la page
-    e.preventDefault() 
-
+    // empêche le rechargement de la page au submit
+    e.preventDefault()
 
     let logInfos = {
         email: emailInput.value,
         password: passwordInput.value,
     }
-  // On se connecte à l'api pour "verifier" les informations entrées dans les inputs
+    // On se connecte à l'api pour "verifier" les informations entrées dans les inputs
     fetch(urlUsers, {
         method: 'POST',
         headers: {
@@ -28,9 +27,9 @@ form.addEventListener('submit', (e) => {
         body: JSON.stringify(logInfos)
     })
 
-    // On retourne la réponse et on verifie si cela vaut "false" ou "true si les données correspondent"
+        // On retourne la réponse et on verifie si cela vaut "false" ou "true" ->si les données correspondent"
 
-    .then(function (response) {
-        console.log(response.ok);
-    })
+        .then(function (response) {
+            console.log(response.ok);
+        })
 })
