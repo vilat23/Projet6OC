@@ -41,21 +41,21 @@ getWorks()
 
 // ------ AJOUT DES FILTRES EN JAVASCRIPT-----------
 
-// async function getFilters() {
+async function getFilters() {
 
-//     const reponse = await fetch(urlApiFilters)
-//     return reponse.json()
+    const reponse = await fetch(urlApiFilters)
+    return reponse.json()
 
-//         .then(function (dataCategories) {
+        .then(function (dataCategories) {
 
-//             for (categories in dataCategories) {
+            for (categories in dataCategories) {
 
-//                 filtreSection.innerHTML += `<div id="${dataCategories[categories].id}">${dataCategories[categories].name}</div>`
-//             }
-//         })
-// }
-// // on lance la fonction
-// getFilters()
+                filtreSection.innerHTML += `<div id="${dataCategories[categories].id}">${dataCategories[categories].name}</div>`
+            }
+        })
+}
+// on lance la fonction
+getFilters()
 
 
 
