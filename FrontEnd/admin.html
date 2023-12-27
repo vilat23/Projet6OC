@@ -15,7 +15,10 @@
     <script src="./script.js" defer></script>
   </head>
   <body>
-    <div class="editBar"></div>
+    <div class="editBar">
+      <a href="#"><img src="./assets/icons/Vector.svg" alt="" /></a>
+      <a class="editMode" href="#">Mode édition</a>
+    </div>
     <div class="mainContainer">
       <header>
         <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -53,7 +56,11 @@
           </article>
         </section>
         <section id="portfolio">
-          <h2>Mes Projets</h2>
+          <div class="portfolio__edit__title">
+            <h2>Mes Projets</h2>
+            <a class="editBtn" href="#">
+                <img src="./assets/icons/editBtnBlack.svg" alt="" />modifier</a>
+          </div>
           <section id="filtres">
             <div id="tous">Tous</div>
             <!-- <div id="1">Objets</div>

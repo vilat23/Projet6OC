@@ -26,10 +26,21 @@ form.addEventListener('submit', (e) => {
         },
         body: JSON.stringify(logInfos)
     })
-
         // On retourne la réponse et on verifie si cela vaut "false" ou "true" ->si les données correspondent"
-
         .then(function (response) {
-            console.log(response.ok);
+            // console.log(response.ok); si c'est ok on renvoie la reponse en json
+            if(response.ok) {
+                response.json()
+            // fonction pur vérifier que le token est bien présent dans le local storage,
+            // si c'est ok on renvoie vers la page admin
+              .then((data) => {
+                const userdata = data.token;
+                if (localStorage.user = userdata) 
+                document.location.href=("admin.html"); 
+            // sinon on affiche un message d'erreur dans le champ dédié
+                })} else {
+                  document.querySelector("#formSection p").innerHTML = "Erreur dans l’identifiant ou le mot de passe";
+                }
+
         })
 })
