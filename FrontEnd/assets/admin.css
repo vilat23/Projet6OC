@@ -446,22 +446,30 @@ footer nav ul {
     align-items: center;
     padding: 0;
     width: 40%;
-    height: 40%;
+    height: auto;
     background-color: beige;
     border-radius: 10px;
     position: relative;
 }
 .modalGallery h2{
     margin-top: 10%;
-    margin-bottom: 8%;
+    margin-bottom: 6%;
 }
 .modalProjects{
     display: flex;
-    justify-content: center;
-    width: 65%;
-    border-bottom: 2px;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 60%;
+    border-bottom: 1px;
     border-style: solid;
-    margin-bottom: 20px;
+    border-color: #B3B3B3;
+    margin-bottom: 10px;
+    padding: 0 0 40px 12px;
+}
+.modalProjects img{
+    width: 80px;
+    margin: 0 10px 30px 0;
+    
 }
 .modalGallery input{
     height: 50px;
@@ -469,6 +477,7 @@ footer nav ul {
 	border: none;
     width: 300px;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    margin-bottom: 50px;
 }
 .modalGallery .fa-xmark{
     position: absolute;
