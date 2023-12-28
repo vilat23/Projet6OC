@@ -12,9 +12,26 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/admin.css" />
+    <script src="https://kit.fontawesome.com/5f67281fe1.js" crossorigin="anonymous"></script>
     <script src="./script.js" defer></script>
+    <script src="./login.js" defer></script>
   </head>
   <body>
+    <!-- ---------------------------------------------------------
+    ------------------------SECTION MODAL------------------------
+    ---------------------------------------------------------- -->
+    <div class="modalContainer">
+        <div class="modalGallery">
+            <span><i class="fa-solid fa-xmark"></i></span>
+            <h2>Galerie photo</h2>
+            <div class="modalProjects">Images des projets</div>
+            <form>
+            <input type="submit" value="Ajouter une photo" />
+        </form>
+        </div>
+    </div>
+    <!-- ------------------------------------------------------------
+    ------------------------------------------------------------ -->
     <div class="editBar">
       <a href="#"><img src="./assets/icons/Vector.svg" alt="" /></a>
       <a class="editMode" href="#">Mode édition</a>
@@ -63,9 +80,6 @@
           </div>
           <section id="filtres">
             <div id="tous">Tous</div>
-            <!-- <div id="1">Objets</div>
-          <div id="2">Appartement</div>
-          <div id="3">Hôtels & Restaurants</div> -->
           </section>
           <div class="gallery"></div>
         </section>
@@ -96,5 +110,6 @@
         </ul>
       </nav>
     </footer>
+
   </body>
 </html>

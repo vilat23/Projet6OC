@@ -44,3 +44,27 @@ form.addEventListener('submit', (event) => {
 
         })
 })
+
+// ----------------------------------------------
+// -----------------PARTIE MODAL---------------
+// ------------------------------------------------
+
+// AFFICHAGE ET FERMETURE DE LA MODAL
+const editBtn = document.querySelector(".editBtn");
+const modalContainer = document.querySelector(".modalContainer");
+const closingCross = document.querySelector(".fa-xmark");
+
+
+editBtn.addEventListener("click", () =>{
+    console.log(editBtn);
+    modalContainer.style.display = "flex";
+});
+closingCross.addEventListener("click", () =>{
+    modalContainer.style.display = "none";
+});
+
+modalContainer.addEventListener("click", (event) =>{
+    if (event.target.className === "modalContainer") {
+    modalContainer.style.display = "none";
+}
+});
