@@ -55,25 +55,26 @@ const modalContainer = document.querySelector(".modalContainer");
 const closingCross = document.querySelector(".fa-xmark");
 
 //FONCTION POUR l'AFFICHAGE ET FERMETURE DE LA MODAL
-function modalSettings() {
-// Affichage de la modal au click sur "modifier" en mettant le style en "display flex"
-editBtn.addEventListener("click", () => {
-  console.log(editBtn);
-  modalContainer.style.display = "flex";
-});
 
-// Fermeture de la modal au click sur "la croix" en mettant le style en "display none"
-closingCross.addEventListener("click", () => {
-  modalContainer.style.display = "none";
-});
-// Fermeture de la modal au click à l'extérieur de la modal en mettant le style en "display none"
-modalContainer.addEventListener("click", (event) => {
-  if (event.target.className === "modalContainer") {
+function modalSettings() {
+  // Affichage de la modal au click sur "modifier" en mettant le style en "display flex"
+  editBtn.addEventListener("click", () => {
+    console.log(editBtn);
+    modalContainer.style.display = "flex";
+  });
+
+  // Fermeture de la modal au click sur "la croix" en mettant le style en "display none"
+  closingCross.addEventListener("click", () => {
     modalContainer.style.display = "none";
-  }
-});
+  });
+  // Fermeture de la modal au click à l'extérieur de la modal en mettant le style en "display none"
+  modalContainer.addEventListener("click", (event) => {
+    if (event.target.className === "modalContainer") {
+      modalContainer.style.display = "none";
+    }
+  });
 }
-modalSettings()
+modalSettings();
 
 // INSERTION DES PHOTOS DANS LA GALLERY MODAL
 
@@ -86,14 +87,11 @@ async function getWorks() {
     reponse
       .json()
 
-      /* Ensuite on insère ces données dans data et on insert les balises <figure>
-           contenant les travaux et leurs données respectives, dans le html à l'intérieur de la div ayant la classe .modalProjects */
-
       .then(function (data) {
         for (works in data) {
           modalProjects.innerHTML += `<figure data-id="${data[works].category.name}">    
               <img src="${data[works].imageUrl}" alt="${data[works].title}">
-              <span class="trashIcon"><i class="fa-solid fa-trash-can"></i></span>
+              <span class="trashIcon"><i class="fa-solid fa-trash-can fa-xs"></i></span>
           </figure>`;
         }
       })
