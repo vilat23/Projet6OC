@@ -15,7 +15,7 @@ form.addEventListener("submit", (event) => {
     email: emailInput.value,
     password: passwordInput.value,
   };
-  // On se connecte à l'api pour "verifier" les informations entrées dans les inputs
+  // On se connecte à l'api pour "envoyer" les informations entrées dans les inputs
   fetch(urlUsers, {
     method: "POST",
     headers: {
