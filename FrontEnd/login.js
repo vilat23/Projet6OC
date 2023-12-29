@@ -4,6 +4,8 @@ const form = document.querySelector("form");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 
+const allTrashIcons = []
+
 // Variable du champ de texte pour l'affichage du message d'erreur
 const errorMsgField = document.querySelector("#formSection p");
 
@@ -54,7 +56,7 @@ const editBtn = document.querySelector(".editBtn");
 const modalContainer = document.querySelector(".modalContainer");
 const closingCross = document.querySelector(".fa-xmark");
 
-//FONCTION POUR l'AFFICHAGE ET FERMETURE DE LA MODAL
+//FONCTION POUR l'AFFICHAGE ET FERMETURE DE LA MODAL-------------------------------
 
 function modalSettings() {
   // Affichage de la modal au click sur "modifier" en mettant le style en "display flex"
@@ -76,7 +78,7 @@ function modalSettings() {
 }
 modalSettings();
 
-// INSERTION DES PHOTOS DANS LA GALLERY MODAL
+// INSERTION DES PHOTOS DANS LA GALLERY MODAL-------------------------
 
 const modalProjects = document.querySelector(".modalProjects");
 // console.log(modalProjects);
@@ -89,12 +91,23 @@ async function getWorks() {
 
       .then(function (data) {
         for (works in data) {
+            
           modalProjects.innerHTML += `<figure data-id="${data[works].category.name}">    
               <img src="${data[works].imageUrl}" alt="${data[works].title}">
               <span class="trashIcon"><i class="fa-solid fa-trash-can fa-xs"></i></span>
           </figure>`;
         }
+        const trashIcons = document.querySelectorAll(".trashIcon");
+        console.log(trashIcons);
+        allTrashIcons.push(trashIcons);
       })
   );
+
 }
 getWorks();
+
+//Fonction pour supprimer les photos-----------------------
+function deletePhoto() {
+    console.log(allTrashIcons);
+}
+deletePhoto();
