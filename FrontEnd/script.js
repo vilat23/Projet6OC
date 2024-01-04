@@ -172,7 +172,8 @@ function deleteWork() {
           })
             .then((response) => {
               if (!response.ok) {
-                throw new Error("La supression à échoué");
+                alert("Suppression échouée, veuillez vous reconnecter");
+                document.location.href = "login.html";
               }
               else{
                 console.log("delete effectué");
