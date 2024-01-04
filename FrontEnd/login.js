@@ -29,8 +29,7 @@ form.addEventListener("submit", (event) => {
       if (response.ok) {
         response
           .json()
-          // fonction pour vérifier que les donnees de connexions entrées dans le local storage correspondent
-          // à celles du token, si c'est ok on stock le token et le userId et on renvoie vers la page admin.html
+          // On vérifie que le token est présent, si c'est ok on stock le token et le userId et on renvoie vers la page admin.html
           .then((data) => {
             // console.log(data)
             if (data.token) {

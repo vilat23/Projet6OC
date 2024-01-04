@@ -119,8 +119,7 @@ const modalProjects = document.querySelector(".modalProjects");
 
 async function getModalWorks() {
   const reponse = await fetch(urlApiWorks);
-  return reponse
-    .json()
+  return reponse.json()
 
     .then((data) => {
       // console.log(data);
@@ -145,6 +144,8 @@ async function getModalWorks() {
 }
 getModalWorks();
 
+// SUPPRESSION D'UN PROJET'-------------------------
+
 function deleteWork() {
   const token = localStorage.getItem("token");
   // console.log(token)
@@ -165,12 +166,16 @@ function deleteWork() {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",
+              "accept": "*/*",
               Authorization: `Bearer ${token}`,
             },
           })
             .then((response) => {
               if (!response.ok) {
                 throw new Error("La supression à échoué");
+              }
+              else{
+                console.log("delete effectué");
               }
               return response.json();
             })
