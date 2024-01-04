@@ -119,8 +119,7 @@ const modalProjects = document.querySelector(".modalProjects");
 
 async function getModalWorks() {
     const reponse = await fetch(urlApiWorks);
-    return reponse
-        .json()
+    return reponse.json()
 
         .then((data) => {
             // console.log(data);
@@ -149,45 +148,37 @@ function deleteWork() {
     const token = localStorage.getItem("token");
     // console.log(token)
     const trashIcons = document.querySelectorAll(".trashIcon");
-    console.log(trashIcons);
+    // console.log(trashIcons);
     trashIcons.forEach((icon) => {
-        icon.addEventListener("click", (event) => {
-            console.log(icon);
+        icon.addEventListener("click", () => {
+            // console.log(icon);
             const trashIconid = icon.id;
-            console.log(trashIconid);
+            // console.log(trashIconid);
             const deleteConfirm = confirm(
                 "Etes vous sur de vouloir supprimer le projet ?"
             );
             // si ok Appelle la fonction de suppression
             if (deleteConfirm) {
-                function trashDelete(trashIconid) {
+                function trashDelete() {
                     fetch("http://localhost:5678/api/works/" + trashIconid, {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",
-                            Authorization: "Bearer" + token,
+                            Authorization: `Bearer ${token}`,
                         },
                     })
-
                         .then((response) => {
                             if (!response.ok) {
                                 throw new Error("La supression à échoué");
                             }
-                            return response.json();
+                            response.json();
                             console.log(response)
                         })
-                        .then((data) => {
-                            console.log(data)
-                            // Supprimer l'élément du DOM après la suppression réussie
-                            // const workToDelete = document.getElementById(trashId);
-                            // if (workToDelete) {
-                            //   workToDelete.remove();
-                            // } else {
-                            //   console.error("Élément à supprimer non trouvé ");
-                            // }
-                        })
+                    // .then((data) => {
+                    //     console.log(data)
+                    // })
                 }
-                trashDelete(trashIconid)
+                trashDelete()
 
             }
 
