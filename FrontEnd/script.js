@@ -158,28 +158,39 @@ function deleteWork() {
             const deleteConfirm = confirm(
                 "Etes vous sur de vouloir supprimer le projet ?"
             );
-            if(deleteConfirm){
-                // function trashDelete(workId){
-                //     fetch("http://localhost:5678/api/works/" + workId, {
-                //         method: "DELETE",
-                //         headers: {
-                //             "Content-Type": "application/json",
-                //             Authorization: "Bearer" + localStorage.getItem("token"),
-                //         },
-                //     })
-                //     .then((response) =>{
-                //         if(!response.ok){
-                //             throw new Error("La supression à échoué");
-                //         }
-                //         console.log(response)
-                //         return response.json();
-                //     })
-                // }
-                // trashDelete(workId)
-                // si ok Appelle la fonction de suppression
-                console.log(trashIconid)
+            // si ok Appelle la fonction de suppression
+            if (deleteConfirm) {
+                function trashDelete(trashIconid) {
+                    fetch("http://localhost:5678/api/works/" + trashIconid, {
+                        method: "DELETE",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: "Bearer" + token,
+                        },
+                    })
+
+                        .then((response) => {
+                            if (!response.ok) {
+                                throw new Error("La supression à échoué");
+                            }
+                            return response.json();
+                            console.log(response)
+                        })
+                        .then((data) => {
+                            console.log(data)
+                            // Supprimer l'élément du DOM après la suppression réussie
+                            // const workToDelete = document.getElementById(trashId);
+                            // if (workToDelete) {
+                            //   workToDelete.remove();
+                            // } else {
+                            //   console.error("Élément à supprimer non trouvé ");
+                            // }
+                        })
+                }
+                trashDelete(trashIconid)
+
             }
-            
+
         });
     });
 }
