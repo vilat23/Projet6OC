@@ -159,7 +159,7 @@ function deleteWork() {
       const deleteConfirm = confirm(
         "Etes vous sur de vouloir supprimer le projet ?"
       );
-      // si ok on lance la fonction de suppression
+      // si click sur ok on lance la fonction de suppression
       if (deleteConfirm) {
         function trashDelete() {
           fetch("http://localhost:5678/api/works/" + trashIconid, {
@@ -170,6 +170,7 @@ function deleteWork() {
               Authorization: `Bearer ${token}`,
             },
           })
+          // on verifie que la requête est ok est on rend la réponse
             .then((response) => {
               if (!response.ok) {
                 alert("Suppression échouée, veuillez vous reconnecter");
@@ -189,3 +190,4 @@ function deleteWork() {
     });
   });
 }
+
