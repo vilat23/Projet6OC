@@ -15,11 +15,12 @@ async function getWorks() {
       .json()
 
       /* Ensuite on insère ces données dans data et on insert les balises <figure>
-                     contenant les travaux et leurs données respectives, dans le html à l'intérieur de la div ayant la classe .gallery */
-
+      contenant les travaux et leurs données respectives, dans le html à l'intérieur de la div ayant la classe .gallery
+       */
       .then(function (data) {
-        // console.log(data);
-
+//         // console.log(data);
+// On vide le conteneur avant de le remplir avec les projets
+        gallery.innerHTML = "";
         for (works in data) {
           gallery.innerHTML += `<figure data-id="${data[works].category.name}" class="active">
                 
@@ -59,15 +60,15 @@ async function getFilters() {
 
             let worksList = document.querySelectorAll(".gallery figure");
             /* Avec une boucle, on indique que les div figure sont non-affichees en remplaçant
-                                      leur class active par inactive */
+           leur class active par inactive */
             for (let eachWork of worksList) {
               eachWork.classList.replace("active", "inactive");
               //   console.log(eachWork, tag);
 
               /* Ensuite on dit que lorsque "SI" l'id de tag correspond à celui dans le dataset 
-                                            "OU" si ça correspond à "tous"
-                                                      -> on remplace la class inactive par active
-                                                      */
+                "OU" si ça correspond à "tous"
+                -> on remplace la class inactive par active
+              */
               if (eachWork.dataset.id === tag || tag === "tous") {
                 eachWork.classList.replace("inactive", "active");
               }
@@ -119,9 +120,12 @@ const modalProjects = document.querySelector(".modalProjects");
 
 async function getModalWorks() {
   const reponse = await fetch(urlApiWorks);
-  return reponse.json()
+  return reponse
+    .json()
 
     .then((data) => {
+      // On vide le container avant de le remplir
+      modalProjects.innerHTML = "";
       // console.log(data);
       data.forEach((element) => {
         // console.log(element);
@@ -166,23 +170,23 @@ function deleteWork() {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",
-              "accept": "*/*",
+              accept: "*/*",
               Authorization: `Bearer ${token}`,
             },
           })
-          // on verifie que la requête est ok est on rend la réponse
+            // on verifie que la requête est ok est on rend la réponse
             .then((response) => {
               if (!response.ok) {
                 alert("Suppression échouée, veuillez vous reconnecter");
                 document.location.href = "login.html";
-              }
-              else{
+              } else {
                 console.log("delete effectué");
               }
-              return response.json();
             })
-            .then((data) => {
-              console.log(data);
+            .then(() => {
+              // On relance les fonctions pour réimporter les projets dans le portofolio et la modale
+              getWorks();
+              getModalWorks();
             });
         }
         trashDelete();
@@ -190,4 +194,3 @@ function deleteWork() {
     });
   });
 }
-
