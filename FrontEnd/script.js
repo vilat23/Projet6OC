@@ -18,8 +18,8 @@ async function getWorks() {
       contenant les travaux et leurs données respectives, dans le html à l'intérieur de la div ayant la classe .gallery
        */
       .then(function (data) {
-//         // console.log(data);
-// On vide le conteneur avant de le remplir avec les projets
+        //         // console.log(data);
+        // On vide le conteneur avant de le remplir avec les projets
         gallery.innerHTML = "";
         for (works in data) {
           gallery.innerHTML += `<figure data-id="${data[works].category.name}" class="active">
@@ -113,7 +113,7 @@ function modalSettings() {
 }
 modalSettings();
 
-// INSERTION DES PHOTOS DANS LA GALLERY MODAL-------------------------
+// INSERTION DES PHOTOS DANS LA GALLERY MODAL1-------------------------
 
 const modalProjects = document.querySelector(".modalProjects");
 // console.log(modalProjects);
@@ -194,6 +194,48 @@ function deleteWork() {
     });
   });
 }
+/* ------------------------------------------------------ */
+/* GESTION DE L'AFFICHAGE ET FERMETURE DES MODALES  */
+/* ------------------------------------------------------ */
 
-// --------------AJOUT D'UN PROJET-------------------------
+// // AFFICHAGE ET FERMETURE DE LA MODAL 2
+// //variables
+const postImgBtn = document.querySelector(".postImgBtn");
+const postModalContainer = document.querySelector(".postModalContainer");
+const postClosingCross = document.querySelector(".postClosingCross");
+const returnArrowModal1 = document.querySelector(".returnArrowModal1");
 
+// //FONCTION POUR l'AFFICHAGE MODAL 2 ET FERMETURE DE LA MODAL 1 -------------------------------
+
+function postModalSettings() {
+  // Affichage de la modal au click sur "modifier" en mettant le style en "display flex"
+  postImgBtn.addEventListener("click", () => {
+    // console.log(editBtn);
+    modalContainer.style.display = "none";
+    postModalContainer.style.display = "flex";
+  });
+}
+postModalSettings();
+
+// //FONCTION POUR FERMETURE DE LA MODAL 2 -------------------------------
+//Fermeture de la modal 2 au click sur "la croix" en mettant le style en "display none"
+function closeModal2() {
+  postClosingCross.addEventListener("click", () => {
+    postModalContainer.style.display = "none";
+  });
+}
+closeModal2()
+
+// //FONCTION POUR RETOUR SUR LA MODAL 1 -------------------------------
+//Retour sur la modale 1 au click sur "la fleche" en mettant le style en "display none" et en affichant la modal 1
+function returnModal1() {
+  returnArrowModal1.addEventListener("click", () => {
+    postModalContainer.style.display = "none";
+    modalContainer.style.display = "flex";
+  });
+}
+returnModal1()
+
+/* ------------------------------------------------------ */
+/* AJOUTS DE PROJET  */
+/* ------------------------------------------------------ */
