@@ -91,7 +91,7 @@ const editBtn = document.querySelector(".editBtn");
 const modalContainer = document.querySelector(".modalContainer");
 const closingCross = document.querySelector(".fa-xmark");
 
-//FONCTION POUR l'AFFICHAGE ET FERMETURE DE LA MODAL-------------------------------
+//FONCTION POUR l'AFFICHAGE ET FERMETURE DE LA MODAL 1-------------------------------
 
 function modalSettings() {
   // Affichage de la modal au click sur "modifier" en mettant le style en "display flex"
@@ -194,11 +194,14 @@ function deleteWork() {
     });
   });
 }
+
+// ----------------------------------------------
+// -----------------PARTIE MODAL 2---------------
+// ------------------------------------------------
 /* ------------------------------------------------------ */
 /* GESTION DE L'AFFICHAGE ET FERMETURE DES MODALES  */
 /* ------------------------------------------------------ */
 
-// // AFFICHAGE ET FERMETURE DE LA MODAL 2
 // //variables
 const postImgBtn = document.querySelector(".postImgBtn");
 const postModalContainer = document.querySelector(".postModalContainer");
@@ -224,7 +227,7 @@ function closeModal2() {
     postModalContainer.style.display = "none";
   });
 }
-closeModal2()
+closeModal2();
 
 // //FONCTION POUR RETOUR SUR LA MODAL 1 -------------------------------
 //Retour sur la modale 1 au click sur "la fleche" en mettant le style en "display none" et en affichant la modal 1
@@ -234,8 +237,27 @@ function returnModal1() {
     modalContainer.style.display = "flex";
   });
 }
-returnModal1()
+returnModal1();
 
+// Fonction pour remplir la liste de catégories dans le formulaire d'ajout
+async function addSelectCategories() {
+  const reponse = await fetch(urlApiFilters);
+  return reponse
+    .json()
+
+    .then((dataPostCategories) => {
+      // console.log(dataPostCategories)
+      const selectorCategory = document.getElementById("selectorCategory");
+      // console.log(selectorCategory)
+      dataPostCategories.forEach((categorie) => {
+        const option = document.createElement("option");
+        option.value = categorie.id;
+        option.textContent = categorie.name;
+        selectorCategory.appendChild(option);
+      });
+    });
+}
+addSelectCategories()
 /* ------------------------------------------------------ */
 /* AJOUTS DE PROJET  */
 /* ------------------------------------------------------ */
