@@ -239,6 +239,13 @@ function returnModal1() {
 }
 returnModal1();
 
+  // Fermeture de la modal 2 au click à l'extérieur de la modal en mettant le style en "display none"
+  postModalContainer.addEventListener("click", (event) => {
+    if (event.target.className === "postModalContainer") {
+      postModalContainer.style.display = "none";
+    }
+  });
+
 // Fonction pour remplir la liste de catégories dans le formulaire d'ajout
 async function addSelectCategories() {
   const reponse = await fetch(urlApiFilters);
@@ -261,3 +268,21 @@ addSelectCategories()
 /* ------------------------------------------------------ */
 /* AJOUTS DE PROJET  */
 /* ------------------------------------------------------ */
+
+const addImgInput = document.getElementById("addPic");
+
+addImgInput.addEventListener("change", () =>{
+  const selectedPic = addImgInput.files[0];
+    console.log(selectedPic);
+})
+
+const titleInput = document.getElementById("postFormTitle");
+console.log(titleInput)
+const categorySelect = document.getElementById("selectorCategory");
+console.log(categorySelect)
+const validateBtn = document.getElementById("postFormValidateBtn");
+console.log(validateBtn)
+
+function postWork() {
+  
+}

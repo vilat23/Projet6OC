@@ -41,15 +41,21 @@
       <h2>Ajout photo</h2>
       <div id="postFormSection">
         <form action="#" method="post">
+          <div class="postFormPhoto">
+            <img id="previewPhoto" src="assets/icons/addPicIcon.png" alt="your image">
+            <label for="addPic">+ Ajouter photo</label>
+            <input type="file" id="addPic" name="addPic" accept=".jpg, .jpeg, .png" required />
+            <p class="photoSizeText">jpg, png : 4mo max</p>
+          </div>
           <label for="title">Titre</label>
-          <input type="text" name="title" id="title" required />
+          <input type="text" name="postFormTitle" id="postFormTitle" required />
           <label for="categorie">Catégorie</label>
           <select name="category" id="selectorCategory">
             <i class="fa-solid fa-arrow-left"></i>
             <option value="">-- Sélectionnez une catégorie -- </option>
           </select required>
           <div class="greyLine"></div>
-          <input type="submit" value="Valider" />
+          <input type="submit" value="Valider" id="postFormValidateBtn" />
         </form>
       </div>
     </div>
