@@ -239,12 +239,12 @@ function returnModal1() {
 }
 returnModal1();
 
-  // Fermeture de la modal 2 au click à l'extérieur de la modal en mettant le style en "display none"
-  postModalContainer.addEventListener("click", (event) => {
-    if (event.target.className === "postModalContainer") {
-      postModalContainer.style.display = "none";
-    }
-  });
+// Fermeture de la modal 2 au click à l'extérieur de la modal en mettant le style en "display none"
+postModalContainer.addEventListener("click", (event) => {
+  if (event.target.className === "postModalContainer") {
+    postModalContainer.style.display = "none";
+  }
+});
 
 // Fonction pour remplir la liste de catégories dans le formulaire d'ajout
 async function addSelectCategories() {
@@ -269,12 +269,25 @@ addSelectCategories()
 /* AJOUTS DE PROJET  */
 /* ------------------------------------------------------ */
 
+
+// GESTION DE L'AJOUT DE L'IMAGE ET SA PREVIEW
 const addImgInput = document.getElementById("addPic");
 
-addImgInput.addEventListener("change", () =>{
+addImgInput.addEventListener("change", () => {
   const selectedPic = addImgInput.files[0];
-    console.log(selectedPic);
+  console.log(selectedPic);
+  const previewImgDiv = document.getElementById("previewImgContainer");
+  // On reinitialise la balise pour recreer qu'une seule img à chaque modification de choix
+  previewImgDiv.innerHTML = "";
+  const previewImg = document.createElement("img");
+  previewImg.src = URL.createObjectURL(addImgInput.files[0]);
+  previewImgDiv.appendChild(previewImg);
+  // Event au click pour avoir la possibilité de modifier son choix d'image au clic sur celle ci
+  previewImg.addEventListener("click", () => {
+    addImgInput.click();
+  })
 })
+
 
 const titleInput = document.getElementById("postFormTitle");
 console.log(titleInput)
@@ -284,5 +297,35 @@ const validateBtn = document.getElementById("postFormValidateBtn");
 console.log(validateBtn)
 
 function postWork() {
-  
+  validateBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    const token = localStorage.getItem("token");
+    const formData = new FormData();
+    formData.append("image", addImgInput.files[0]);
+    formData.append("title", titleInput.value);
+    formData.append("category", categorySelect.value);
+
+    fetch((urlApiWorks), {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          alert("Ajout non validé, veuillez vérifier les informations");
+        } else {
+          response.json()
+          alert("Ajout de la photo réussi !");
+          postModalContainer.style.display = "none";
+          modalContainer.style.display = "flex";
+          // On relance les fonctions pour réimporter les projets dans le portofolio et la modale
+          getWorks();
+          getModalWorks();
+        }
+      })
+      .catch((error) => console.error(error));
+  })
 }
+postWork()
