@@ -282,29 +282,34 @@ addImgInput.addEventListener("change", () => {
   const previewImg = document.createElement("img");
   previewImg.src = URL.createObjectURL(addImgInput.files[0]);
   previewImgDiv.appendChild(previewImg);
+    previewPhotoIcon.style.display = "none";
+    addPicBtnId.style.display = "none";
+    photoSizeTextId.style.display = "none";
+
   // Event au click pour avoir la possibilité de modifier son choix d'image au clic sur celle ci
   previewImg.addEventListener("click", () => {
     addImgInput.click();
   })
 })
 
+// GESTION DE L'AJOUT D'UNE PHOTO AVEC FORMDATA
 
 const titleInput = document.getElementById("postFormTitle");
-console.log(titleInput)
+// console.log(titleInput)
 const categorySelect = document.getElementById("selectorCategory");
-console.log(categorySelect)
+// console.log(categorySelect)
 const validateBtn = document.getElementById("postFormValidateBtn");
-console.log(validateBtn)
+// console.log(validateBtn)
 
 function postWork() {
   validateBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const token = localStorage.getItem("token");
+
     const formData = new FormData();
     formData.append("image", addImgInput.files[0]);
     formData.append("title", titleInput.value);
     formData.append("category", categorySelect.value);
-
     fetch((urlApiWorks), {
       method: "POST",
       headers: {
@@ -327,5 +332,6 @@ function postWork() {
       })
       .catch((error) => console.error(error));
   })
+
 }
 postWork()

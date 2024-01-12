@@ -627,14 +627,13 @@ footer nav ul {
 text-align: center;
 font-size: 10px;
 color: #444444;
-padding: 0;
+margin-bottom: 20px;
 }
 .postFormPhoto{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px 0 20px 0;
   background-color: #E8F1F6;
   border-radius: 3px;
 }
