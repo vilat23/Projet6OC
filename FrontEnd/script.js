@@ -282,9 +282,10 @@ addImgInput.addEventListener("change", () => {
   const previewImg = document.createElement("img");
   previewImg.src = URL.createObjectURL(addImgInput.files[0]);
   previewImgDiv.appendChild(previewImg);
+
     previewPhotoIcon.style.display = "none";
-    addPicBtnId.style.display = "none";
-    photoSizeTextId.style.display = "none";
+    // addPicBtnId.style.display = "none";
+    // photoSizeTextId.style.display = "none";
 
   // Event au click pour avoir la possibilité de modifier son choix d'image au clic sur celle ci
   previewImg.addEventListener("click", () => {
