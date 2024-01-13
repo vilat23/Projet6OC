@@ -451,7 +451,7 @@ footer nav ul {
   color: black;
   font-size: 24px;
   margin-top: 10%;
-  margin-bottom: 6%;
+  margin-bottom: 5%;
 }
 .modalProjects {
   display: flex;
@@ -555,7 +555,7 @@ footer nav ul {
   color: black;
   font-size: 24px;
   margin-top: 10%;
-  margin-bottom: 6%;
+  margin-bottom: 5%;
 }
 .postModalForm .fa-arrow-left {
   font-size: 20px;
@@ -617,7 +617,7 @@ footer nav ul {
 
 #postFormSection label {
   font-size: 14px;
-	margin: 2em 0 1em 0;
+	margin: 1em 0 1em 0;
 }
 #postFormSection textarea {
 	border: none;
@@ -627,7 +627,7 @@ footer nav ul {
 text-align: center;
 font-size: 10px;
 color: #444444;
-margin-bottom: 20px;
+margin-bottom: 10px;
 }
 .postFormPhoto{
   display: flex;
@@ -636,9 +636,11 @@ margin-bottom: 20px;
   align-items: center;
   background-color: #E8F1F6;
   border-radius: 3px;
+  margin-bottom: 20px;
 }
 #previewImgContainer img{
-  max-width: 130px;
+  margin-top: 10px;
+  max-width: 129px;
 }
 .addPicBtn{
   display: flex;
