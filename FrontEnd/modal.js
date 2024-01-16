@@ -191,7 +191,7 @@ function postWork() {
       .then((response) => {
         if (!response.ok) {
           warningMsg.innerHTML =
-            "Ajout non validé, veuillez vérifier les informations saisies";
+            "Ajout non validé, veuillez revérifier les informations saisies";
           // alert("Ajout non validé, veuillez vérifier les informations");
         } else {
           response.json();
