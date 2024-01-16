@@ -663,3 +663,13 @@ margin-bottom: 10px;
 #addPic{
   display: none;
 }
+
+.modalWarningMessage{
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+#postFormValidateBtn{
+  margin-top: 15px;
+}
