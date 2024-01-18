@@ -11,14 +11,12 @@ const filtreSection = document.querySelector("#filtres");
 async function getWorks() {
   const reponse = await fetch(urlApiWorks);
   return (
-    reponse
-      .json()
-
+    reponse.json()
       /* Ensuite on insère ces données dans data et on insert les balises <figure>
       contenant les travaux et leurs données respectives, dans le html à l'intérieur de la div ayant la classe .gallery
        */
       .then(function (data) {
-        //         // console.log(data);
+        console.log(data);
         // On vide le conteneur avant de le remplir avec les projets
         gallery.innerHTML = "";
         for (works in data) {
@@ -42,7 +40,7 @@ async function getFilters() {
     .json()
 
     .then(function (dataCategories) {
-      // console.log(dataCategories)
+// console.log(dataCategories)
       for (categories in dataCategories) {
         const filtreSection = document.querySelector("#filtres");
         const filter = document.createElement("div");

@@ -25,18 +25,15 @@ form.addEventListener("submit", (event) => {
   })
     // On retourne la réponse et on verifie si cela vaut "false" ou "true" ->si les données correspondent"
     .then(function (response) {
-      // console.log(response.ok); si c'est ok on renvoie la reponse en json
       if (response.ok) {
         response
           .json()
-          // On vérifie que le token est présent, si c'est ok on stock le token et le userId et on renvoie vers la page admin.html
+          // On vérifie que le token est présent, si c'est ok on stock le token et le userId et on renvoie vers la page
           .then((data) => {
-            // console.log(data)
             if (data.token) {
+              // On enregistre le token et le user id dans le localstorage
               localStorage.setItem("token", data.token);
               localStorage.setItem("userId", data.userId);
-              // console.log(data.token)
-              // console.log(data.userId)
               document.location.href = "admin.html";
             }
           });

@@ -146,7 +146,7 @@ const addImgInput = document.getElementById("addPic");
 
 addImgInput.addEventListener("change", () => {
   const previewImgDiv = document.getElementById("previewImgContainer");
-  // On reinitialise la balise pour recreer qu'une seule img à chaque modification de choix (lors de l'ajout de photo)
+  // On "reinitialise" la balise pour recreer qu'une seule img à chaque modification de choix (lors de l'ajout de photo)
   previewImgDiv.innerHTML = "";
   const previewImg = document.createElement("img");
   previewImg.src = URL.createObjectURL(addImgInput.files[0]);
@@ -164,11 +164,11 @@ addImgInput.addEventListener("change", () => {
 // ------------------------------------------------------------
 
 const titleInput = document.getElementById("postFormTitle");
-// console.log(titleInput)
+
 const categorySelect = document.getElementById("selectorCategory");
-// console.log(categorySelect)
+
 const validateBtn = document.getElementById("postFormValidateBtn");
-// console.log(validateBtn)
+
 
 function postWork() {
   validateBtn.addEventListener("click", (event) => {
@@ -187,6 +187,7 @@ function postWork() {
       body: formData,
     })
       .then((response) => {
+        // Si conditions de la requete non remplies
         if (!response.ok) {
           warningMsg.innerHTML =
             "Ajout non validé, veuillez revérifier les informations saisies";
@@ -221,9 +222,7 @@ function deleteWork() {
   // console.log(trashIcons);
   trashIcons.forEach((icon) => {
     icon.addEventListener("click", () => {
-      // console.log(icon);
       const trashIconid = icon.id;
-      // console.log(trashIconid);
       const deleteConfirm = confirm(
         "Etes vous sur de vouloir supprimer la photo ?"
       );
