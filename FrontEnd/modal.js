@@ -145,10 +145,8 @@ addSelectCategories();
 const addImgInput = document.getElementById("addPic");
 
 addImgInput.addEventListener("change", () => {
-  //   const selectedPic = addImgInput.files[0];
-  //   console.log(selectedPic);
   const previewImgDiv = document.getElementById("previewImgContainer");
-  // On reinitialise la balise pour recreer qu'une seule img à chaque modification de choix
+  // On reinitialise la balise pour recreer qu'une seule img à chaque modification de choix (lors de l'ajout de photo)
   previewImgDiv.innerHTML = "";
   const previewImg = document.createElement("img");
   previewImg.src = URL.createObjectURL(addImgInput.files[0]);
@@ -195,19 +193,16 @@ function postWork() {
           // alert("Ajout non validé, veuillez vérifier les informations");
         } else {
           response.json();
-          alert("Ajout de la photo effectué !");
+          alert("Votre photo a bien été ajoutée !");
           // On relance les fonctions pour réimporter les projets dans le portofolio et la modale
           getWorks();
           getModalWorks();
           postModalContainer.style.display = "none";
           modalContainer.style.display = "flex";
 
-        // On "rafraichit" les champs d'ajout de photo
-          const previewImgDiv = document.getElementById("previewImgContainer");
-          previewImgDiv.innerHTML = "";
+        // On "rafraichit" les champs
           titleInput.value = "";
           categorySelect.value = "";
-          previewPhotoIcon.style.display = "block";
         }
       })
       .catch((error) => console.error(error));
@@ -230,7 +225,7 @@ function deleteWork() {
       const trashIconid = icon.id;
       // console.log(trashIconid);
       const deleteConfirm = confirm(
-        "Etes vous sur de vouloir supprimer le projet ?"
+        "Etes vous sur de vouloir supprimer la photo ?"
       );
       // si click sur ok on lance la fonction de suppression
       if (deleteConfirm) {
@@ -243,7 +238,7 @@ function deleteWork() {
               Authorization: `Bearer ${token}`,
             },
           })
-            // on verifie que la requête est ok est on rend la réponse
+            // on rend la réponse de la requête
             .then((response) => {
               if (!response.ok) {
                 alert(

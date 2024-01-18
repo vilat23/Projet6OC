@@ -22,11 +22,10 @@ async function getWorks() {
         // On vide le conteneur avant de le remplir avec les projets
         gallery.innerHTML = "";
         for (works in data) {
-          gallery.innerHTML += `<figure data-id="${data[works].category.name}" class="active">
-                
+          gallery.innerHTML += `<figure data-id="${data[works].category.name}" class="active">  
             <img src="${data[works].imageUrl}" alt="${data[works].title}">
             <figcaption>${data[works].title}</figcaption>
-        </figure>`;
+            </figure>`;
         }
       })
   );
@@ -55,7 +54,7 @@ async function getFilters() {
         let filtres = document.querySelectorAll("#filtres div");
         for (let filtre of filtres) {
           filtre.addEventListener("click", function () {
-            let tag = this.id; // donne la valeur à tag -> l'id de la div ex:"tous" ou "Appartement" etc...
+            let tag = this.id; // donne la valeur à tag -> l'id de la div du filtre cliquée, ex:"tous" ou "Appartement" etc...
             // console.log(tag);
 
             let worksList = document.querySelectorAll(".gallery figure");
@@ -65,9 +64,9 @@ async function getFilters() {
               eachWork.classList.replace("active", "inactive");
               //   console.log(eachWork, tag);
 
-              /* Ensuite on dit que lorsque "SI" l'id de tag correspond à celui dans le dataset 
+              /* Ensuite on dit que lorsque "SI" l'id de tag correspond à celui du dataset de la <figure> des works 
                 "OU" si ça correspond à "tous"
-                -> on remplace la class inactive par active
+                -> on remplace la class inactive par active (on affiche)
               */
               if (eachWork.dataset.id === tag || tag === "tous") {
                 eachWork.classList.replace("inactive", "active");
