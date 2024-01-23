@@ -204,6 +204,7 @@ function postWork() {
         // On "rafraichit" les champs
           titleInput.value = "";
           categorySelect.value = "";
+          warningMsg.innerHTML = "";
         }
       })
       .catch((error) => console.error(error));
