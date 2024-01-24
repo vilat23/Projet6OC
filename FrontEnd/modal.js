@@ -138,7 +138,7 @@ async function addSelectCategories() {
 addSelectCategories();
 
 /* ------------------------------------------------------ */
-/* AJOUTS DE PROJET  */
+/* ------------AJOUTS DE PROJET  -------------------------*/
 /* ------------------------------------------------------ */
 
 // GESTION DE L'AJOUT DE L'IMAGE ET SA PREVIEW
@@ -222,7 +222,7 @@ function postWork() {
           categorySelect.value = "";
           warningMsg.innerHTML = "";
 
-          // -----Correction soutenance refresh du champ de l'image après l'ajout-----------------
+          // -----Correction soutenance : refresh du champ de l'image après l'ajout -------------
           previewImgDiv.innerHTML = "";
 
           validateBtn.style.backgroundColor = "#A7A7A7";
