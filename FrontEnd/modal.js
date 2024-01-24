@@ -169,16 +169,26 @@ const categorySelect = document.getElementById("selectorCategory");
 
 const validateBtn = document.getElementById("postFormValidateBtn");
 
+// correction ajout soutenance
+
+function changeValidateBtnColor(){
+  if (titleInput.value=="") {
+    validateBtn.style.backgroundColor = "#4682B4";
+  }
+}
+changeValidateBtnColor()
 
 function postWork() {
   validateBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const token = localStorage.getItem("token");
     const warningMsg = document.querySelector(".modalWarningMessage");
+    const previewImgDiv = document.getElementById("previewImgContainer");
     const formData = new FormData();
     formData.append("image", addImgInput.files[0]);
     formData.append("title", titleInput.value);
     formData.append("category", categorySelect.value);
+
     fetch(urlApiWorks, {
       method: "POST",
       headers: {
@@ -201,10 +211,15 @@ function postWork() {
           postModalContainer.style.display = "none";
           modalContainer.style.display = "flex";
 
-        // On "rafraichit" les champs
+          // On "rafraichit" les champs
           titleInput.value = "";
           categorySelect.value = "";
           warningMsg.innerHTML = "";
+
+          // -----Correction soutenance-----------------
+          previewImgDiv.innerHTML = "";
+          validateBtn.style.backgroundColor = "#A7A7A7";
+
         }
       })
       .catch((error) => console.error(error));
