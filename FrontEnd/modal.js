@@ -144,6 +144,7 @@ addSelectCategories();
 // GESTION DE L'AJOUT DE L'IMAGE ET SA PREVIEW
 const addImgInput = document.getElementById("addPic");
 
+
 addImgInput.addEventListener("change", () => {
   const previewImgDiv = document.getElementById("previewImgContainer");
   // On "reinitialise" la balise pour recreer qu'une seule img à chaque modification de choix (lors de l'ajout de photo)
@@ -164,17 +165,22 @@ addImgInput.addEventListener("change", () => {
 // ------------------------------------------------------------
 
 const titleInput = document.getElementById("postFormTitle");
-
 const categorySelect = document.getElementById("selectorCategory");
-
 const validateBtn = document.getElementById("postFormValidateBtn");
 
-// correction ajout soutenance
+// correction soutenance : ajout de la vérification des champs "titre" et "categorie" pour modifier l'état du bouton
 
-function changeValidateBtnColor(){
-  if (titleInput.value=="") {
-    validateBtn.style.backgroundColor = "#4682B4";
-  }
+function changeValidateBtnColor() {
+  [titleInput, categorySelect].forEach((field) => {
+    field.addEventListener("input", () => {
+      if (titleInput.value !== "" && categorySelect.value !== "0") {
+        validateBtn.style.backgroundColor = "#1D6154";
+      }
+      else {
+        validateBtn.style.backgroundColor = "#A7A7A7";
+      }
+    })
+  })
 }
 changeValidateBtnColor()
 
@@ -216,10 +222,10 @@ function postWork() {
           categorySelect.value = "";
           warningMsg.innerHTML = "";
 
-          // -----Correction soutenance-----------------
+          // -----Correction soutenance refresh du champ de l'image après l'ajout-----------------
           previewImgDiv.innerHTML = "";
-          validateBtn.style.backgroundColor = "#A7A7A7";
 
+          validateBtn.style.backgroundColor = "#A7A7A7";
         }
       })
       .catch((error) => console.error(error));
@@ -262,13 +268,12 @@ function deleteWork() {
                 document.location.href = "login.html";
               } else {
                 console.log("delete effectué");
+                // On relance les fonctions pour réimporter les projets dans le portofolio et la modale
+                getWorks();
+                getModalWorks();
               }
             })
-            .then(() => {
-              // On relance les fonctions pour réimporter les projets dans le portofolio et la modale
-              getWorks();
-              getModalWorks();
-            });
+            .catch((error) => console.error(error));
         }
         trashDelete();
       }

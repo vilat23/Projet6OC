@@ -16,7 +16,7 @@ async function getWorks() {
       contenant les travaux et leurs données respectives, dans le html à l'intérieur de la div ayant la classe .gallery
        */
       .then(function (data) {
-        console.log(data);
+        // console.log(data);
         // On vide le conteneur avant de le remplir avec les projets
         gallery.innerHTML = "";
         for (works in data) {
