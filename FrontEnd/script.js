@@ -1,3 +1,6 @@
+
+
+
 // On récupère l'adresse de l'API et on la met dans une variable
 const urlApiWorks = "http://localhost:5678/api/works";
 const urlApiFilters = "http://localhost:5678/api/categories";
@@ -77,6 +80,7 @@ async function getFilters() {
 }
 // on lance la fonction
 getFilters();
+
 
 
 

@@ -1,3 +1,7 @@
+// --------------------------------------------------------------------
+// ---------------GESTION DU LOGIN--------------------------------
+// -------------------------------------------------------------------
+
 // On définit differentes variables, le chemin API de users, les champs input du formulaire
 const urlUsers = "http://localhost:5678/api/users/login";
 const form = document.querySelector("form");
@@ -45,5 +49,3 @@ form.addEventListener("submit", (event) => {
       }
     });
 });
-
-
