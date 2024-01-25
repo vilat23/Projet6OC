@@ -158,6 +158,7 @@ addImgInput.addEventListener("change", () => {
   previewImg.addEventListener("click", () => {
     addImgInput.click();
   });
+  console.log(addImgInput.files.length);
 });
 
 // -----------------------------------------------------------
@@ -171,9 +172,9 @@ const validateBtn = document.getElementById("postFormValidateBtn");
 // correction soutenance : ajout de la vérification des champs "titre" et "categorie" pour modifier l'état du bouton
 
 function changeValidateBtnColor() {
-  [titleInput, categorySelect].forEach((field) => {
+  [titleInput, categorySelect, addImgInput].forEach((field) => {
     field.addEventListener("input", () => {
-      if (titleInput.value !== "" && categorySelect.value !== "0") {
+      if (titleInput.value !== "" && categorySelect.value !== "0" && addImgInput.files.length > 0) {
         validateBtn.style.backgroundColor = "#1D6154";
       }
       else {
@@ -219,7 +220,7 @@ function postWork() {
 
           // On "rafraichit" les champs
           titleInput.value = "";
-          categorySelect.value = "";
+          categorySelect.value = "0";
           warningMsg.innerHTML = "";
 
           // -----Correction soutenance : refresh du champ de l'image après l'ajout -------------
